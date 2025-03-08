@@ -1,0 +1,13 @@
+sudo docker cp maki-container:/maki/evaluation/figure_data ./
+sudo docker cp maki-container:/maki/evaluation/time_data ./
+sudo docker start maki-container
+sudo docker attach maki-container
+
+mkdir build
+cd build
+cmake ..
+
+cd ..
+
+bash reset_evaluation.sh
+bash replicate_results.sh &> trace.txt
